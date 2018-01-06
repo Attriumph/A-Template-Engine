@@ -1,4 +1,4 @@
-=A-Template-Engine
+# A-Template-Engine
 A tool suited to solve text-heavy problems with relatively less logic in program development. 
   Author:Ned Batchelder
   Refer:MichaelDiBernardo  https://github.com/aosabook/500lines/tree/master/template-engine
@@ -7,11 +7,10 @@ A tool suited to solve text-heavy problems with relatively less logic in program
   Web Application creates HTML files and send it to browser.A big progbem developer facing is that how best to generate a large string       containing a mix of static and dynamic data?
    
     (1)One way: Have string constants in code, and join them together to produce the page. Dynamic data would be inserted with string   
-          substitution of some sort.
-          Disadvantages: The logic of the page is hard to see because the static text is broken into separate pieces.
-                       The details of how data is formatted is lost in the Python code.
-                       In order to modify the HTML page, our front-end designer would need to be able to edit Python code to make HTML   
-                       changes
+       substitution of some sort.  
+       Disadvantages: The logic of the page is hard to see because the static text is broken into separate              pieces.The details of how data is formatted is lost in the Python code.
+       
+   In order to modify the HTML page, our front-end designer would need to be able to edit Python code to make HTML changes.
 
     (2)A better way to produce HTML pages is with templates.  
        Advantages: more logics are represented in static text.
