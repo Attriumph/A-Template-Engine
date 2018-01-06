@@ -1,7 +1,7 @@
 # A-Template-Engine
 A tool suited to solve text-heavy problems with relatively less logic in program development. 
   Author:Ned Batchelder
-  Refer:[MichaelDiBernardo GitHub](https://github.com/aosabook/500lines/tree/master/template-engine " ")
+  Refer: [MichaelDiBernardo's GitHub](https://github.com/aosabook/500lines/tree/master/template-engine " ")
     
 
 ## Introducation:
@@ -20,9 +20,9 @@ substitution of some sort.
   *These files are called templates because they are used to produce many pages with similar structure but differing details.
   *The engine is comprise of a function that takes a static template describing the structure and static content of the page, and a   
      dynamic context that provides the dynamic data to plug into the template. 
-  
- > There are two methods to render a template.
-    >> 1. compile: parsing produce the exctuable code  
-       2. inteprete
+
+> There are two methods to render a template.
+>> 1. compile: parsing produce the exctuable code  
+2. inteprete
    
 For implementing engine，our goal is to compile the template to Python.
