@@ -23,6 +23,6 @@ A tool suited to solve text-heavy problems with relatively less logic in program
   
  > There are two methods to render a template.
     >> 1. compile: parsing produce the exctuable code  
-    >> 2. inteprete
+       2. inteprete
    
 For implementing engine，our goal is to compile the template to Python.
