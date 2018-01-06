@@ -1,6 +1,8 @@
 # A-Template-Engine
 A tool suited to solve text-heavy problems with relatively less logic in program development. 
+  
   Author:Ned Batchelder
+  
   Refer: [MichaelDiBernardo's GitHub](https://github.com/aosabook/500lines/tree/master/template-engine " ")
     
 
@@ -15,8 +17,8 @@ substitution of some sort.
 
 > (2)A better way to produce HTML pages is with templates.  
 >> Advantages: 
- >>>  - more logics are represented in static text.  
- - "模板语言恰好相反：它大多是静态文字文本，同时用特殊的符号表示可执行的动态部分。"
+>>>  - more logics are represented in static text.  
+>>> - "模板语言恰好相反：它大多是静态文字文本，同时用特殊的符号表示可执行的动态部分。"
   
   *These files are called templates because they are used to produce many pages with similar structure but differing details.
   *The engine is comprise of a function that takes a static template describing the structure and static content of the page, and a   
@@ -24,7 +26,7 @@ substitution of some sort.
 
 > There are two methods to render a template.
 >> 1. compile: parsing produce the exctuable code.  
-2. inteprete: we choose this method
+>> 2. inteprete: we choose this method
    
 For implementing engine，our goal is to compile the template to Python.
 
