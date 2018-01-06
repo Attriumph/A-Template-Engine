@@ -1,4 +1,4 @@
-========= A-Template-Engine
+=A-Template-Engine
 A tool suited to solve text-heavy problems with relatively less logic in program development. 
   Author:Ned Batchelder
   Refer:MichaelDiBernardo  https://github.com/aosabook/500lines/tree/master/template-engine
