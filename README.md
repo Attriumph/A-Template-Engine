@@ -21,8 +21,7 @@ substitution of some sort.
 >>> - "模板语言恰好相反：它大多是静态文字文本，同时用特殊的符号表示可执行的动态部分。"
   
   *These files are called templates because they are used to produce many pages with similar structure but differing details.
-  *The engine is comprise of a function that takes a static template describing the structure and static content of the page, and a   
-     dynamic context that provides the dynamic data to plug into the template. 
+  *The engine is comprise of a function that takes a static template describing the structure and static content of the page, and a dynamic context that provides the dynamic data to plug into the template. 
 
 > There are two methods to render a template.
 >> 1. compile: parsing produce the exctuable code.  
