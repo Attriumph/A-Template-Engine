@@ -7,7 +7,7 @@ A tool suited to solve text-heavy problems with relatively less logic in program
     
 
 ## Introducation:
-  Web Application creates HTML files and send it to browser.A big progbem developer facing is that how best to generate a large string       containing a mix of static and dynamic data?
+  All Web Application creates HTML files and send it to browser.Since HTML files contains a majority of static text but less dynamic data, a big progbem developer facing is how best to generate a large string containing a mix of static and dynamic data?
 
 > (1)One way: Have string constants in code, and join them together to produce the page. Dynamic data would be inserted with string   
 substitution of some sort.  
@@ -25,8 +25,8 @@ substitution of some sort.
 
 > There are two methods to render a template.
 >> 1. compile: parsing produce the exctuable code.  
->> 2. inteprete: we choose this method
+>> 2. inteprete: we choose this method in this template engine.
 
 
 For implementing engine，our goal is to compile the template to Python.
-
+[The general idea of implementaion of the Template Engine](!http://chuantu.biz/t6/200/1515397090x-1404775519.png)
