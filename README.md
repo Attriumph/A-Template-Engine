@@ -30,4 +30,4 @@ substitution of some sort.
 
 For implementing engine，our goal is to compile the template to Python.
 
-[The general idea of implementaion of the Template Engine](!http://chuantu.biz/t6/200/1515397090x-1404775519.png " ")
+![The general idea of implementaion of the Template Engine](http://chuantu.biz/t6/200/1515397090x-1404775519.png " ")
