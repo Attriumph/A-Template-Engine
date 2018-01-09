@@ -16,7 +16,6 @@ class AnyOldObject(object):
         for n, v in attrs.items():
             setattr(self, n, v)
 
-
 class TempliteTest(TestCase):
     """Tests for Templite."""
 
