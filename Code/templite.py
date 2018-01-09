@@ -1,43 +1,11 @@
 import re
+from codeBuilder import *
+
 
 class TempliteSyntaxError(ValueError):
     # raised when a template has a synax error
     pass
 
-class CodeBuilder(object):
-
-    INDENT_STEP = 4
-    def __init__(self, indent=0):
-        self.code = []
-        self.indent_level = indent
-
-    def add_line(self,line):
-        self.code.extend(['' * self.indent_level,line,'\n'])
-
-    def indent(self):
-        self.indent_level += self.INDENT_STEP
-
-    def dedent(self):
-        self.indent_level -= self.INDENT_STEP
-
-    def add_section(self):
-        section = CodeBuilder(self.indent_level)
-        self.code.append(section)
-        return section
-
-    def __str__(self):
-        return ''.join(str(c) for c in self.code)
-
-    def get_globals(self):
-        """Execute the code, and return a dict of globals it defines."""
-        # A check that the caller really finished all the blocks they started.
-        assert self.indent_level == 0
-        # Get the Python source as a single string.
-        python_source = str(self)
-        # Execute the source, defining globals, and return them.
-        global_namespace = {}
-        exec(python_source, global_namespace)
-        return global_namespace
 
 class Templite(object):
 
@@ -46,13 +14,15 @@ class Templite(object):
         `contexts` are dictionaries of values to use for future renderings.
         These are good for filters and global values.
         """
+        # define a dict of context
         self.context = {}
         for context in contexts:
             self.context.update(context)
-
+        # define two set that will record all variables and loop variables
         self.all_vars = set()
         self.loop_vars = set()
 
+        # create an object of CodeBuilder and create fixed python code of final exectuable python code
         code = CodeBuilder()
         code.add_line('def render_function(context, do_dots):')
         code.indent()
@@ -65,11 +35,12 @@ class Templite(object):
         buffered = []
 
         def flush_output():
-            print(buffered)
-            """Force `buffered` to the code builder."""
+
+            """ an inner function to help us with buffering output strings."""
             if len(buffered) == 1:
                 code.add_line("append_result(%s)" % buffered[0])
             elif len(buffered) > 1:
+                # combine repeated append calls into one extend call
                 code.add_line("extend_result([%s])" % ", ".join(buffered))
             del buffered[:]
 
@@ -78,16 +49,17 @@ class Templite(object):
         # Split the text according to special signs to form a list of tokens.
         tokens = re.split(r"(?s)({{.*?}}|{%.*?%}|{#.*?#})", text)
 
+        # deal with four situations of tokens according to the begin of them
         for token in tokens:
             if token.startswith('{#'):
                 # it means comment, ignore it and move on.
                 continue
             elif token.startswith('{{'):
-                # An expression to evaluate.
+                # An expression need to be deal with _expr_code method(convert token into python code).
                 expr = self._expr_code(token[2:-2].strip())
                 buffered.append("to_str(%s)" % expr)
             elif token.startswith('{%'):
-                # Action tag: split into words and parse further.
+                # if or for statement, which need to be split into words and parse further.
                 flush_output()
                 words = token[2:-2].strip().split()
                 if words[0] == 'if':
@@ -111,7 +83,7 @@ class Templite(object):
                     )
                     code.indent()
                 elif words[0].startswith('end'):
-                    # End of a expression, pop the ops stack.
+                    # End of a for or if, pop the ops stack.
                     if len(words) != 1:
                         self._syntax_error("Don't understand end", token)
                     end_what = words[0][3:]
@@ -133,6 +105,7 @@ class Templite(object):
 
             flush_output()
 
+            # define local variables by compare all_vars and loop_vars
             for var_name in self.all_vars - self.loop_vars:
                 vars_code.add_line("c_%s = context[%r]" % (var_name, var_name))
 
